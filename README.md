@@ -1,12 +1,20 @@
 # Server Configuration Notes For RockyLinux 10
 
-##Contains the [InitialSetup Script](https://github.com/jamescogo/ServerConfigs/edit/main/InitialSetup.sh)
+## [SSH Setup](https://github.com/jamescogo/ServerConfigs/edit/main/SetupSSH.sh)
+  * Create SSH Keys using ssh-keygen and the elliptical Edwards Curve Signing Algorithm
+  * Secure the keys
+  * Copy and convert the OpenSSH keys into puTTY.ppk Keys
 
-##Contains the [SSH Setup](https://github.com/jamescogo/ServerConfigs/edit/main/SetupSSH.sh)
+## [InitialSetup Script](https://github.com/jamescogo/ServerConfigs/edit/main/InitialSetup.sh)
+  * Install updates to software packages
+  * Install Cockpit
+  * Install and configure NGINX
+  * Install Let's Encrypt certificates for HTTPS
+  * Install Grafana
 
-##Contains [Wireguard Configuration](https://github.com/jamescogo/ServerConfigs/edit/main/SetupWireguard.sh) script to:
-  install the epel-release repositories, 
-  install the wireguard tools, 
-  create key pairs for a server and device, 
-  create the configuration files for the server and client
-  print a QR code to quickly add the client with a camera.
+## [Wireguard Configuration](https://github.com/jamescogo/ServerConfigs/edit/main/SetupWireguard.sh)
+  * Install the epel-release repositories
+  * Install the wireguard tools
+  * Create key pairs for a server and device
+  * Create the configuration files for the server and client
+  * Print a QR code to quickly add the client with a camera
