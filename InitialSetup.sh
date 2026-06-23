@@ -77,11 +77,18 @@ sudo dnf install grafana -y
     #;domain = localhost
   
   # line 71,72 : specify your certificate if you set [https] or [h2] for protocol
-  # * it needs [grafana] user can read certificate and key
-    #cert_file = /etc/letsencrypt/live/dlp.srv.world/fullchain.pem
-    #cert_key = /etc/letsencrypt/live/dlp.srv.world/privkey.pem
+  # * it needs [grafana] user can read certificate and key 
+    # cert_file = /etc/letsencrypt/live/YOURDOMAIN.COM/fullchain.pem
+    # cert_key = /etc/letsencrypt/live/YOURDOMAIN.COM/privkey.pem
 
-# systemctl enable --now grafana-server
+# Grant Grafana read access to LetsEncrypt folders
+sudo chgrp -R grafana /etc/letsencrypt/*
+sudo chmod -R g+rx /etc/letsencrypt/*
+
+#Start the grafana server then enable the grafana service
+systemctl start grafana-server
+systemctl enable --now grafana-server
+
 # Add Firewall Rules for Grafana
 firewall-cmd --add-port=3000/tcp
 firewall-cmd --runtime-to-permanent
