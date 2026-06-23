@@ -1,6 +1,3 @@
-sudo dnf update
-sudo dnf upgrade
-
 #Set variables
 WEBDOMAIN=YourWebsiteName.com
 
