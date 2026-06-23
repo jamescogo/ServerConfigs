@@ -8,6 +8,12 @@ chmod 700 ~/.ssh
 #Sets read-write for the owner only
 chmod 600 ~/.ssh/id_ed25519
 
+#Add the key to your server's authorized keys file
+cat id_ed25519.pub >>  ~/.ssh/authorized_keys
+
+#Restart ssh to load the configurations on your server.
+sudo systemctl restart sshd
+
 #If on windows, copy and paste the private key below into a text file.
 cat ~/.ssh/id_ed25519
 
