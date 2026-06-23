@@ -15,13 +15,13 @@ firewall-cmd --permanent --zone=internal --add-forward
 systemctl restart firewalld.service
 
 # Install the repository to install wireguard
-sudo dnf install elrepo-release epel-release
+sudo dnf install elrepo-release epel-release -y
 
 #Install the wireguard tools package
-sudo dnf wireguard-tools
+sudo dnf install wireguard-tools -y
 
-#List installed packages on the server
-dnf list installed
+# This is just here in case you need to list the installed packages on the server
+# dnf list installed
 
 #Create a public and private key for your wireguard server.
 wg genkey | sudo tee /etc/wireguard/private.key
