@@ -1,6 +1,9 @@
 sudo dnf update
 sudo dnf upgrade
 
+#Set variables
+WEBDOMAIN=YourWebsiteName.com
+
 #Install Cockpit - Useful for http based server administration but... it is an attack vector.
 sudo dnf install cockpit -y
 sudo systemctl enable --now cockpit.socket
@@ -17,16 +20,16 @@ sudo firewall-cmd --reload
 
 #Install NGINX
 sudo dnf install nginx -y
-sudo systemctl enable --now nginx
 
 #Add Firewall Rules for NGINX
-sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
-sudo firewall-cmd --reload
+  sudo firewall-cmd --permanent --add-service=http
+  sudo firewall-cmd --permanent --add-service=https
+  sudo firewall-cmd --reload
 
-#Configure NGINX
+#Configure NGINX -the double arrows appends instead of overwrites with the single arrow to the filename.
+cat << EOF >> /etc/nginx/conf.d/example.com.conf
 server {
-    server_name yourwebsite.com;
+    server_name $WEBDOMAIN;
 
     listen 80;
     listen [::]:80;
@@ -36,12 +39,25 @@ server {
         index  index.html index.htm;
     }
 }
+EOF
+
+#Change permissions of the NGINX web folder
+  sudo chown -R nginx:nginx /usr/share/nginx/html
+
+#Enable NGINX to run at boot
+  sudo systemctl start nginx
+  sudo systemctl enable --now nginx
 
 #Install Lets Encrypt
 dnf install epel-release
 dnf install certbot python3-certbot-nginx -y
 
+#Before running this, you should have a domain already set up for your server. Otherwise you could probably just use the ip address (but I haven't tested this yet)
+  certbot --nginx
+#Click through and answer all of the questions, and then you should be good to go at the end of it.
 
+#Test the certbot auto-renewal process
+certbot renew --dry-run
 
 #Install Grafana
 sudo dnf install grafana -y
