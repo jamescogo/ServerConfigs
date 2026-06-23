@@ -1,11 +1,11 @@
 # Server Configuration Notes For RockyLinux 10
 
-## [SSH Setup](https://github.com/jamescogo/ServerConfigs/blob/main/SetupSSH.sh)
+## [SSH Setup](https://github.com/jamescogo/ServerConfigs/blob/main/SetupInitialSSH.sh)
   * Create SSH Keys using ssh-keygen and the elliptical Edwards Curve Signing Algorithm
   * Secure the keys
   * Copy and convert the OpenSSH keys into puTTY.ppk Keys
 
-## [InitialSetup Script](https://github.com/jamescogo/ServerConfigs/blob/main/InitialSetup.sh)
+## [InitialSetup Script](https://github.com/jamescogo/ServerConfigs/blob/main/SetupSoftware.sh)
   * Install updates to software packages
   * Install Cockpit
   * Install and configure NGINX
