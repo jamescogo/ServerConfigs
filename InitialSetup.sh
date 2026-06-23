@@ -92,3 +92,4 @@ systemctl enable --now grafana-server
 # Add Firewall Rules for Grafana
 firewall-cmd --add-port=3000/tcp
 firewall-cmd --runtime-to-permanent
+#GRAFANA NOTE: When logging into the system for the first time, the username and password is admin:admin.
