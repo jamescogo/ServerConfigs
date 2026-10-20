@@ -2,6 +2,12 @@
 sudo dnf update
 sudo dnf upgrade
 
+#Create non-Root admin
+sudo useradd -m -s /bin/bash username
+sudo passwd username
+sudo usermod -aG wheel username
+
+
 #Create your SSH keys
 ssh-keygen -t ed25519 -C "SuperSecretHax-OrWhateverYouWant_LikeEmail_Or_Something"
 # Answer the prompts, but if you're super lazy, just hit enter twice and not save a passcode for your ssh key, allowing anyone with access to it to steal and use it.
