@@ -100,6 +100,7 @@ unset SERVER_INTERFACENAME
 unset SERVER_IPADDRESS
 
 #Create a QR Code to quickly add your device. OR download a copy of your client configuration file to your computer.
+dnf install qrencode -y
 qrencode -t ansiutf8 < client1.conf
 
 # Wireguard Startup
