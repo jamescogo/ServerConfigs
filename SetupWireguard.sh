@@ -74,7 +74,7 @@ PostDown = iptables -t nat -D POSTROUTING -o $SERVER_INTERFACENAME -j MASQUERADE
 [Peer]
 # Sets up one client which will be setup to use 10.10.10.2 IP
 PublicKey = $CLENT1_PUBLICKEY
-AllowedIPs = 10.10.10.2/24
+AllowedIPs = 10.10.10.2/32
 EOF
 
 # Secure the configuration file so only ROOT has access to read and modify the configuration.
