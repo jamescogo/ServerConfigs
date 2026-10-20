@@ -22,7 +22,7 @@ systemctl restart firewalld.service
 sudo dnf install elrepo-release epel-release -y
 
 #Install the wireguard tools package
-sudo dnf install wireguard-tools -y
+sudo dnf install wireguard-tools iptables -y
 
 # This is just here in case you need to list the installed packages on the server
 # dnf list installed
