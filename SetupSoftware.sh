@@ -10,6 +10,8 @@ sudo firewall-cmd --reload
 #Enable and Start Cockpit
 sudo systemctl enable cockpit.socket
 sudo systemctl start cockpit.socket
+#Check Cockpit Service status
+sudo systemctl status cockpit.socket
 
 #If you installed cockpit on accident and you want to remove it, run the following commands.
   #sudo systemctl stop cockpit
