@@ -28,19 +28,19 @@ sudo dnf install wireguard-tools iptables -y
 # dnf list installed
 
 #Create a public and private key for your wireguard server.
-wg genkey | sudo tee /etc/wireguard/private.key
-sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
+wg genkey | sudo tee /etc/wireguard/server_private.key
+sudo cat /etc/wireguard/server_private.key | wg pubkey | sudo tee /etc/wireguard/server_public.key
 
 #Repeat for each of your clients, as you'll need them for each of your configurations.
 wg genkey | sudo tee /etc/wireguard/client1_private.key
-sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/client1_public.key
+sudo cat /etc/wireguard/client1_private.key | wg pubkey | sudo tee /etc/wireguard/client1_public.key
 
 #Initiate the file by touching it
 sudo touch /etc/wireguard/wg0.conf
 
 #Assign your newly created private and public keys to variables to create the configuration files.
-SERVER_PRIVATEKEY=$(</etc/wireguard/private.key)
-SERVER_PUBLICKEY=$(</etc/wireguard/public.key)
+SERVER_PRIVATEKEY=$(</etc/wireguard/server_private.key)
+SERVER_PUBLICKEY=$(</etc/wireguard/server_public.key)
 CLIENT1_PRIVATEKEY=$(</etc/wireguard/client1_private.key)
 CLENT1_PUBLICKEY=$(</etc/wireguard/client1_public.key)
 
