@@ -112,27 +112,31 @@ sudo systemctl start wg-quick@wg0.service
 sudo systemctl enable wg-quick@wg0.service
 
 #-----Removal-----
-#Stop the wireguard service
+# Bring the wireguard interface down
+  #wg-quick down wg0
+# Bring the wireguard interface up
+  #wg-quick up wg0
+# Stop the wireguard service
   #sudo systemctl stop wg-quick@wg0.servce
-#Disable the service disable the service you can use the following commands.
+# Disable the service disable the service you can use the following commands.
   #sudo systemctl disable wg-quick@wg0.service
-#List all system services
+# List all system services
   #systemctl list-units --type=service --all
-#Locate service files
+# Locate service files
   #systemctl cat <service_name>
-#Reload services
+# Reload services
   #sudo systemctl daemon-reload
-#Reset failed services
+# Reset failed services
   #sudo systemctl reset-failed
-#Identify existing interfaces
+# Identify existing interfaces
   #ip addr show
-#Delete interface
+# Delete interface
   #ip link delete wg0
-#Add wireguard to firewalld
+# Add wireguard to firewalld
  #sudo firewall-cmd --zone=public --add-port=51820/udp --permanent
-#Add masquerading for VPN
+# Add masquerading for VPN
  #sudo firewall-cmd --zone=public --add-masquerade --permanent
-#Reload firewall
+# Reload firewall
  #sudo firewall-cmd --reload
-#Check firewall rules
+# Check firewall rules
   #sudo firewall-cmd --zone=public --list-all
