@@ -111,6 +111,28 @@ sudo systemctl start wg-quick@wg0.service
 # Enable the service to automatically launch at system boot
 sudo systemctl enable wg-quick@wg0.service
 
-#In the event that you need to take down wireguard and disable the service you can use the following commands.
-#sudo systemctl stop wg-quick@wg0.servce
-#sudo systemctl disable wg-quick@wg0.service
+#-----Removal-----
+#Stop the wireguard service
+  #sudo systemctl stop wg-quick@wg0.servce
+#Disable the service disable the service you can use the following commands.
+  #sudo systemctl disable wg-quick@wg0.service
+#List all system services
+  #systemctl list-units --type=service --all
+#Locate service files
+  #systemctl cat <service_name>
+#Reload services
+  #sudo systemctl daemon-reload
+#Reset failed services
+  #sudo systemctl reset-failed
+#Identify existing interfaces
+  #ip addr show
+#Delete interface
+  #ip link delete wg0
+#Add wireguard to firewalld
+ #sudo firewall-cmd --zone=public --add-port=51820/udp --permanent
+#Add masquerading for VPN
+ #sudo firewall-cmd --zone=public --add-masquerade --permanent
+#Reload firewall
+ #sudo firewall-cmd --reload
+#Check firewall rules
+  #sudo firewall-cmd --zone=public --list-all
